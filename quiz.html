@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <style>
+        body{
+            background-color: blue;
+        }
+        .main-div {
+            border: 1px black solid;
+            /* width: 1170px; */
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(5, 13, 251);
+            border: none;
+
+        }
+
+        .inner-div {
+            border: 1px blue solid;
+            background-color: rgb(155, 251, 251);
+            width: 400px;
+            height: 400px;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 7 15px 15px blue;
+        }
+
+        #option1, #option2, #option3, #option4 {
+            width: 200px;
+            height: 30px;
+            text-align: left;
+            margin-bottom: 10px;
+            /* background: transparent; */
+            border-style: none;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            border-radius: 20px;
+            background-color: rgb(112, 162, 250);
+            font-weight: 600;
+            padding: 4px;
+        }
+
+        #nextbtn {
+
+            padding: 6px;
+            border: 1px solid;
+            border-radius: 8px;
+            box-shadow: 5px;
+            margin-left: 280px;
+            margin-top: 20px;
+            background-color: rgb(112, 162, 250);
+
+
+
+        }
+
+        li {
+
+            list-style: none;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: rgb(155, 251, 251);
+            width: 30%;
+            margin-left: 35%;
+            border-style: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Quiz App</h1>
+    <div class="main-div">
+
+        <div class="inner-div">
+            <h2 id="question">Question here</h2>
+            <ul>
+                <li>
+                    <!-- <input type="radio" name="click" id="ans1" class="answer1"> -->
+                    <button for="ans1" id="option1" onclick="checkOptions(this)">Answer 1</button>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <!-- <input type="radio" name="click" id="ans2" class="answer2"> -->
+                    <button for="ans2" id="option2" onclick="checkOptions(this)">Answer 2</button>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <!-- <input type="radio" name="click" id="ans3" class="answer3"> -->
+                    <button for="ans3" id="option3" onclick="checkOptions(this)">Answer 3</button>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <!-- <input type="radio" name="click" id="ans4" class="answer4"> -->
+                    <button for="ans4" id="option4" onclick="checkOptions(this)">Answer 4</button>
+                </li>
+            </ul>
+
+            <button id="nextbtn" onclick="nextquest()">Next Question</button>
+
+        </div>
+
+        <div class="result" id="showresult"></div>
+
+    </div>
+
+    <script>
+
+        let questions = [
+            {
+                question: "Q1: What is the full form of Html ?",
+                a: "None of the Below",
+                b: "Hyper Markup Language",
+                c: "Hyper Text  Languauge",
+                d: "Hyper Text Markup Languauge",
+
+                ans: "Hyper Text Markup Languauge",
+            },
+
+            {
+                question: "Q2: What is the full form of CSS ?",
+                a: "Central Superior Services",
+                b: "Cascading Style Sheets",
+                c: "Cascading Sheets Style",
+                d: "Computer Style Sheets",
+
+                ans: "Cascading Style Sheets",
+            },
+
+            {
+                question: "Q3: HTML element for the largest heading ?",
+                a: "h6",
+                b: "h1",
+                c: "head",
+                d: "None of the Above",
+
+                ans: "h1",
+            },
+
+            {
+                question: "Q4: HTML tag is used to define an internal style sheet ?",
+                a: "Style",
+                b: "Script",
+                c: "head",
+                d: "CSS",
+
+                ans: "Style",
+            },
+
+            {
+                question: "Q5: What is the full form of JS ?",
+                a: "Joule Second",
+                b: "JavaStyle",
+                c: "JavaScript",
+                d: "None",
+
+                ans: "JavaScript",
+            },
+
+
+        ]
+
+        let question1 = document.getElementById("question")
+        let option1 = document.getElementById("option1")
+        let option2 = document.getElementById("option2")
+        let option3 = document.getElementById("option3")
+        let option4 = document.getElementById("option4")
+        let next = document.getElementById("nextbtn")
+
+        let i = 0;
+        let score = 0;
+        question1.innerHTML = questions[i].question;
+        option1.innerHTML = questions[i].a;
+        option2.innerHTML = questions[i].b;
+        option3.innerHTML = questions[i].c;
+        option4.innerHTML = questions[i].d;
+
+        function nextquest() {
+            i++;
+            question1.innerHTML = questions[i].question;
+            option1.innerHTML = questions[i].a;
+            option2.innerHTML = questions[i].b;
+            option3.innerHTML = questions[i].c;
+            option4.innerHTML = questions[i].d;
+
+
+            // let a = 0; 
+            // if(document.getElementById("ans1").checked){
+            // a = 1;
+            // console.log(a);
+            // }
+        }
+
+        check(document.getElementById())
+
+        let a = 0;
+        let b = 0;
+        let c = 0
+        let d = 0;
+        function checkOptions(name) {
+            if(name.textContent == questions[i].ans){
+                nextbtn.disabled = false
+            score += 5
+            alert("your answer is correct" + "\n" + " score is :" + score)
+            
+        }
+        else{
+            nextbtn.disabled = false
+            alert("your answer is wrong" + "\n" + " score is :" + score)
+        }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
